@@ -1,0 +1,22 @@
+{
+  "name": "mailslot-example-browser-signup-agent",
+  "private": true,
+  "type": "module",
+  "description": "A Mailslot deployment that signs itself up for a service end to end — Browser Rendering drives the form, the onStored hook clears email verification.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@cloudflare/puppeteer": "^1.0.0",
+    "@mailslot/core": "^0.2.1",
+    "agents": "^0.2.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.0.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^4.0.0"
+  }
+}

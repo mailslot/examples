@@ -1,0 +1,16 @@
+{
+  "name": "mailslot-example-quickstart-otp",
+  "private": true,
+  "type": "module",
+  "description": "The 30-second win: mint a disposable address on a deployed Mailslot, wait for mail, extract the code.",
+  "scripts": {
+    "start": "tsx quickstart.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4"
+  }
+}

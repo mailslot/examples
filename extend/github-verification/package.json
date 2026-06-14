@@ -1,0 +1,21 @@
+{
+  "name": "mailslot-example-github-verification",
+  "private": true,
+  "type": "module",
+  "description": "The minimal Mailslot customization: an Inbox subclass that captures the GitHub email-verification link via the onStored hook.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@mailslot/core": "^0.2.1",
+    "agents": "^0.2.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.0.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^4.0.0"
+  }
+}

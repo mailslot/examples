@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Same shape as Example 0 (packages/instance): the worker binds the Inbox
+  // subclass below as `Inbox`, so core's email routing uses it. The smallest
+  // possible Mailslot customization — no extra bindings.
+  "name": "mailslot-github-verification",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [
+      { "name": "Inbox", "class_name": "Inbox" },
+      { "name": "MailslotMcp", "class_name": "MailslotMcp" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["Inbox", "MailslotMcp"] }
+  ],
+  "r2_buckets": [
+    { "binding": "RAW", "bucket_name": "mailslot-github-verification-raw" }
+  ],
+  // Set once, survive deploys (keep_vars):
+  //   EMAIL_DOMAIN   — var (the domain this worker receives mail on)
+  //   MAILSLOT_TOKEN — secret (auth for /captured, /v1, /mcp)
+  "keep_vars": true,
+  "alias": {
+    "ai": "./src/shims/ai.ts"
+  },
+  "observability": { "enabled": true }
+}

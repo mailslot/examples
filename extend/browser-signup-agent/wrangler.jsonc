@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Same shape as Example 0 (packages/instance): the worker binds the Inbox
+  // subclass below as `Inbox`, so core's email routing uses it. This is a full
+  // Mailslot deployment — its own worker, DOs, and bucket — plus a Browser
+  // Rendering binding for the signup automation.
+  "name": "mailslot-browser-signup-agent",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [
+      { "name": "Inbox", "class_name": "Inbox" },
+      { "name": "MailslotMcp", "class_name": "MailslotMcp" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["Inbox", "MailslotMcp"] }
+  ],
+  "r2_buckets": [
+    { "binding": "RAW", "bucket_name": "mailslot-browser-signup-raw" }
+  ],
+  // Browser Rendering — drives the signup form and reconnects to the live
+  // session to type the OTP once the verification mail arrives.
+  "browser": { "binding": "BROWSER" },
+  // Set once, survive deploys (keep_vars):
+  //   EMAIL_DOMAIN   — var (the domain this worker receives mail on)
+  //   MAILSLOT_TOKEN — secret (auth for /signup, /v1, /mcp)
+  "keep_vars": true,
+  "alias": {
+    // Optional dep of the agents SDK, dynamically imported on paths we don't use.
+    "ai": "./src/shims/ai.ts"
+  },
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# secrets & local config
+.env
+.env.local
+.dev.vars
+.dev.vars.*
+
+# wrangler / build
+.wrangler/
+dist/
+*.tsbuildinfo
+
+# logs
+*.log
+npm-debug.log*
+
+# os
+.DS_Store
