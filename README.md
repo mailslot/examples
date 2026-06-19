@@ -28,7 +28,7 @@ worker.
 | Example | What it shows | Status |
 |---|---|---|
 | **[quickstart-otp](integrate/quickstart-otp)** | the 30-second win: mint → wait → extract OTP, in one file over HTTP | ✅ built |
-| **[mcp-agent](integrate/mcp-agent)** | point an agent at the MCP endpoint and let it drive the loop | stub |
+| **[mcp-agent](integrate/mcp-agent)** | point an agent at the MCP endpoint and let it drive the loop | ✅ built |
 | **[n8n-workflow](integrate/n8n-workflow)** | the signed `message.received` webhook → n8n | stub |
 
 The loop, in plain HTTP:

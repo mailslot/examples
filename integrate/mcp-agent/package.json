@@ -1,0 +1,21 @@
+{
+  "name": "mailslot-example-mcp-agent",
+  "private": true,
+  "type": "module",
+  "description": "A runnable agent that consumes a deployed Mailslot over MCP and lets the model drive the email loop.",
+  "scripts": {
+    "start": "tsx agent.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ai-sdk/mcp": "^1.0.52",
+    "@ai-sdk/openai": "^3.0.73",
+    "ai": "^6.0.208",
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}
